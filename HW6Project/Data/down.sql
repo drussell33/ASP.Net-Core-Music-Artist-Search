@@ -1,0 +1,8 @@
+﻿IF EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'Chinook')
+BEGIN
+	ALTER DATABASE [Chinook] SET OFFLINE WITH ROLLBACK IMMEDIATE;
+	ALTER DATABASE [Chinook] SET ONLINE;
+	DROP DATABASE [Chinook];
+END
+
+GO

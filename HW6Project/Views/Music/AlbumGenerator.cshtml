@@ -1,0 +1,63 @@
+﻿@model IEnumerable<HW6Project.Models.Album>
+
+
+<div class="container">
+
+    @*@if (Model.FirstOrDefault().Artist.Name != null)*@
+    @if (Model.FirstOrDefault() != null)
+    {
+        <hr />
+        <h1 class="text-white text-xl-center">Look at the Albums by @Model.FirstOrDefault().Artist.Name !</h1>
+        <hr />
+        <div class="col-12 text-center">
+            <img src="~/img/morty_smith.jpg"  class="rounded" />
+        </div>
+        
+    }
+    
+    @if (Model.FirstOrDefault() == null)
+    {
+        <hr />
+        <h1 class="text-white text-xl-center">There are no albums on record (get it? lol)</h1>
+        <hr />
+    }
+
+
+
+    @if (Model != null)
+    {
+        <hr />
+
+        <div class="row">
+            @foreach (HW6Project.Models.Album i in Model)
+            {
+                <div class="col-4">
+
+                    <table class="table bg-white table-hover">
+                        <thead>
+                            <tr class="text-center"><th colspan="3">@i.Title</th></tr>
+                            <tr><th>Track</th><th>Duration</th><th>Price</th></tr>
+                        </thead>
+                        <tbody>
+                            @foreach (HW6Project.Models.Track t in i.Tracks)
+                            {
+                                TimeSpan time = TimeSpan.FromMilliseconds(t.Milliseconds);
+                                string displayTime = time.ToString(@"mm\:ss");
+
+                                <tr>
+                                    <td>@t.Name</td>
+                                    <td>@displayTime</td>
+                                    <td>$@t.UnitPrice</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            }
+        </div>
+
+
+    }
+</div>
