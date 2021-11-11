@@ -1,0 +1,1 @@
+Using ASP.Net MVC Core to create a simple webpage that has a search bar that allows the user to find music artist and display all of that artist albums with tracks
